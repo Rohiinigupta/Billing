@@ -1,0 +1,15 @@
+if __name__ == "__main__":
+    # Sales summaries
+    daily, weekly, monthly = sales_summary()
+    print("Daily Sales:\n", daily)
+    print("\nWeekly Sales:\n", weekly)
+    print("\nMonthly Sales:\n", monthly)
+
+    # Most sold items
+    top_items = most_sold_items()
+    print("\nTop Selling Items:\n", top_items)
+
+    # Export
+    export_report(daily, "daily_sales.csv")
+    export_report(top_items, "top_items.csv")
+    print("\nReports exported as CSV!")

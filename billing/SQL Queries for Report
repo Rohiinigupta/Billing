@@ -1,0 +1,21 @@
+-- Daily sales summary
+SELECT date(created_at) as day, SUM(total_amount) as total_sales, COUNT(*) as total_orders
+FROM orders
+GROUP BY date(created_at);
+
+-- Weekly sales (group by ISO week)
+SELECT strftime('%Y-%W', created_at) as week, SUM(total_amount), COUNT(*)
+FROM orders
+GROUP BY strftime('%Y-%W', created_at);
+
+-- Monthly sales
+SELECT strftime('%Y-%m', created_at) as month, SUM(total_amount), COUNT(*)
+FROM orders
+GROUP BY strftime('%Y-%m', created_at);
+
+-- Most sold items
+SELECT item_name, SUM(quantity) as total_qty, SUM(line_total) as total_sales
+FROM order_items
+GROUP BY item_name
+ORDER BY total_qty DESC
+LIMIT 10;
